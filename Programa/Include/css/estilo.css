@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+ body {
+    font-family: 'Antonio', sans-serif;
+    font-weight: bold;
+    background-image: radial-gradient(circle at 50% -20.71%, #f99f60 0, 
+    #fd9561 7.14%, #ff8a63 14.29%, #ff7e66 21.43%, #ff7069 28.57%, 
+    #fd616e 35.71%, #f95073 42.86%, #f23c78 50%, #e9257f 57.14%, 
+    #df0787 64.29%, #d30092 71.43%, #c4009d 78.57%, #b300a8 85.71%,
+    #9e0eb4 92.86%, #8522c0 100%);
+}
+
+._container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    padding: 0 35%;
+}
+
+.form-group:last-child {
+    padding-top: 10px;
+}
+
+input {
+    text-transform: uppercase;
+}
+
+.login {
+    cursor: pointer;
+}
+.form-control {
+    border-radius: 5px;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 3em;
+    margin: 32px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.main-title::before, 
+.main-title::after {
+    content: "";
+    width: 20%;
+    height: 2px;
+    margin: 0 32px;
+    line-height: 100%;
+}
+
+.main-title::before {
+    background-image: linear-gradient(90deg, transparent, black);
+}
+
+.main-title::after {
+    background-image: linear-gradient(-90deg, transparent, black);
+}
+
+
+
