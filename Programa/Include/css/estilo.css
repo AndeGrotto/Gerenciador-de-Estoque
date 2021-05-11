@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Antonio&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans&display=swap');
 
 html, body {
     margin: 0;
@@ -8,57 +8,93 @@ html, body {
  body {
     width: 100vw;
     height: 100vh;
-    font-family: 'Antonio', sans-serif;
-    font-weight: bold;
-    background-image: radial-gradient(circle at 50% 120.71%, #aa30bd 0, #78229f 16.67%, #45117a 33.33%, #0b0051 50%, #00002b 66.67%, #000008 83.33%, #000000 100%);
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    background-image: url("../imagens/mesa-de-trabalho2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 ._container {
-    border-radius: 40px 0;
+    width: 480px;
+    height: 440px;
     margin: auto;
-    margin-top: 10%;
-    padding-top: 5vh;
-    width: 30vw;
-    height: 60vh;
-    background-color: rgb(15, 4, 43);
+    margin-top: 50vh;
+    top: 50%;     
+    transform: translate(0, -43%);
+    padding: 150px 30px;
+    color: white;
+    background-color: transparent;
+    box-shadow: 0 0 1em black;
+    -webkit-box-shadow: 0 0 1em black;
+    -moz-box-shadow: 0 0 1em black;
+    backdrop-filter: saturate(70%) blur(3px);
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: calc(-75px);
+    left: calc(42% - 40px);
+    filter: saturate(60%);
+}
+/*
+h3 {
+    padding-bottom: 15%;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+}
+*/
+
+
+input[type=text]:focus, input[type=password]:focus {
+    border-color: rgb(55, 148, 255);
+    box-shadow: 0 0 8px 0 rgb(55, 148, 255);
+}
+
+.form-group input[type=text], .form-group input[type=password]{
+    padding-left: 40px;
+    color: black;
 }
 
 .form-group {
-    margin-bottom: 10px;
-    padding: 0 10%;
+    position: relative;
 }
 
-.form-group:first-child {
-    padding-top: 30px;
-}
-
-.form-group:last-child {
-    padding-top: 20px;
-}
-
-input {
-    text-transform: uppercase;
-}
-
-.icone {
-    font-size: 100px;
-    margin-left: 40%;
-    color: white;
-    padding: 0 0 50px 0;
-}
-
-.login {
-    font-size: larger;
-    cursor: pointer;
-    background-image: linear-gradient(270deg, #ff4868 0, #ff3a74 8.33%, #ff2c7d 16.67%, #fd1f83 25%, #e41285 33.33%, #c70783 41.67%, #a6007c 50%, #850073 58.33%, #68026a 66.67%, #4e0662 75%, #35095c 83.33%, #1c0c56 91.67%, #000e52 100%);
-    border-width: 0;
-    border-color: black;
-    color: white;
+.form-group i{
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 3px 8px;
+    color: rgb(0, 0, 0);
 }
 
 .form-control {
-    border-radius: 50px;
+    border-radius: 0px;
+    background-clip: border-box;
+    color: black;
 }
 
+.font {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
+.login {
+    margin-top: 10%;
+    padding-top: 7px;
+    background-color: #5397cd;
+    border-color: #5397cd;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+}
 
+.login:focus{
+    color: white;
+    background-color: #5397cd;
+    border-color: #5397cd;
+}
