@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Login</title>
+    <title>Página de Cadastro de Produtos</title>
 
 <!-- Estilos -->
 
@@ -25,23 +25,33 @@
     <link rel="stylesheet" href="../../Include/css/estilo.css">
 
 </head>
-<body class="fotologin">
+<body class="fotocadastro">
+    <header>
+       <!-- Cabeçalho Menu --> 
+    </header>
     <main>
-        <div class="_containerLogin">
-            <img class="imglogin" src="../../Include/imagens/avatarLogin.png"> 
+        <div class="_containerCadastro">
+            <img class="imgcadastro" src="../../Include/imagens/avatarCadastro.png"> 
             <!--<h3>Login Estoque</h3>-->    
             <form action="#" method="POST">
                 <div class="form-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" class="form-control font" id="nome" name="nome" title="Usuário padrão do estoque" placeholder="Usuário" required>
+                    <input type="text" class="form-control font" id="nome" name="nome" title="Digite o nome do produto" placeholder="Nome" required>
                 </div>
         
                 <div class="form-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" class="form-control font" id="senha" name="senha" title="Senha padrão do estoque" placeholder="Password" required>
+                    <i class="fas fa-dollar-sign"></i>
+                    <input type="text" class="preco form-control font" id="Preço" name="preco" title="Digite o valor" placeholder="Preço" required>
                 </div>
+
                 <div class="form-group">
-                    <input class="form-control login" type="submit" value="Login">
+                    <i class="fas fa-sort-amount-up"></i>
+                    <input type="number" class="form-control font" id="Quantidade" name="quantidade" title="Digite a quantidade" placeholder="Quantidade" required>
+                </div>
+
+                <div class="form-group grid">
+                    <input class="form-control cadastro" type="submit" value="Adicionar">
+                    <input class="form-control cadastro" type="button" value="Voltar" onclick="goBack()">
                 </div>
             </form>
         </div>
@@ -64,5 +74,9 @@
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"
   ></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+  <script src="../../Include/js/javascript.js"></script>
 </body>
 </html>

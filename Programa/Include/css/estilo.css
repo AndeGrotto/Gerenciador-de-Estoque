@@ -10,6 +10,9 @@ html, body {
     height: 100vh;
     font-family: 'Fira Sans', sans-serif;
     font-family: 'Josefin Sans', sans-serif;
+}
+
+.fotologin {
     background-image: url("../imagens/mesa-de-trabalho2.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -17,7 +20,15 @@ html, body {
     background-attachment: fixed;
 }
 
-._container {
+.fotocadastro {
+    background-image: url("../imagens/mercado2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+._containerLogin {
     width: 480px;
     height: 440px;
     margin: auto;
@@ -31,9 +42,31 @@ html, body {
     -webkit-box-shadow: 0 0 1em black;
     -moz-box-shadow: 0 0 1em black;
     backdrop-filter: saturate(70%) blur(3px);
+
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
 
-img {
+._containerCadastro {
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    margin-top: 50vh;
+    top: 50%;     
+    transform: translate(0, -43%);
+    padding: 150px 30px;
+    color: white;
+    background-color: transparent;
+    box-shadow: 0 0 1em black;
+    -webkit-box-shadow: 0 0 1em black;
+    -moz-box-shadow: 0 0 1em black;
+    backdrop-filter: saturate(70%) blur(5px);
+
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.imglogin {
     width: 150px;
     height: 150px;
     position: absolute;
@@ -41,24 +74,28 @@ img {
     left: calc(42% - 40px);
     filter: saturate(60%);
 }
-/*
-h3 {
-    padding-bottom: 15%;
-    font-size: 35px;
-    font-weight: bold;
-    text-align: center;
-}
-*/
 
-
-input[type=text]:focus, input[type=password]:focus {
-    border-color: rgb(55, 148, 255);
-    box-shadow: 0 0 8px 0 rgb(55, 148, 255);
+.imgcadastro {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: calc(-75px);
+    left: calc(45% - 40px);
+    filter: saturate(210%);
 }
 
-.form-group input[type=text], .form-group input[type=password]{
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
+    border-color: rgb(0, 0, 0);
+    box-shadow: 0 0 8px 0 rgb(5, 5, 5);
+}
+
+.form-group input[type=text], .form-group input[type=password], input[type=number]{
     padding-left: 40px;
     color: black;
+}
+
+.padding-cadastro:last-child {
+    padding-top: 20px;
 }
 
 .form-group {
@@ -85,7 +122,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 .login {
     margin-top: 10%;
-    padding-top: 7px;
+    padding-top: 8px;
     background-color: #5397cd;
     border-color: #5397cd;
     color: white;
@@ -97,4 +134,57 @@ input[type=text]:focus, input[type=password]:focus {
     color: white;
     background-color: #5397cd;
     border-color: #5397cd;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 40px;
+
+}
+
+.cadastro:first-child {
+    margin-top: 25px;
+    padding-top: 8px;
+    border-width: 1px;
+    background-color: #4877f4;
+    border-color: #4877f4;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.cadastro:first-child:hover {
+    background-color: #0e4bef;
+    border-color: #0e4bef;
+    transition: 0.5s;
+}
+
+.cadastro:last-child {
+    margin-top: 25px;
+    padding-top: 8px;
+    background-color: #ff0000;
+    border-color: #ff0000;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.cadastro:last-child:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+    transition: 0.5s;
+}
+
+
+
+/* Aparecer o Form */
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
