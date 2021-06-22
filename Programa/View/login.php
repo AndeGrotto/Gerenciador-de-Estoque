@@ -22,18 +22,18 @@
     crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="../../Include/css/estilo.css">
+    <link rel="stylesheet" href="../Include/css/estilo.css">
 
 </head>
 <body class="fotologin">
     <main>
         <div class="_containerLogin">
-            <img class="imglogin" src="../../Include/imagens/avatarLogin.png"> 
+            <img class="imglogin" src="../Include/imagens/avatarLogin.png"> 
             <!--<h3>Login Estoque</h3>-->    
             <form action="login.php" method="POST">
                 <div class="form-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" class="form-control font" id="nome" name="nome" title="Usuário padrão do estoque" placeholder="Usuário" required>
+                    <input type="text" class="form-control font" id="nome" name="usuario" title="Usuário padrão do estoque" placeholder="Usuário" required>
                 </div>
         
                 <div class="form-group">
@@ -44,6 +44,12 @@
                     <input class="form-control login" type="submit" value="Login">
                 </div>
             </form>
+            <?php
+                include_once("../Controller/LoginController.php");
+                $obj = new LoginController();
+                $obj->controlaConsulta();
+            ?>
+
         </div>
     </main>
     

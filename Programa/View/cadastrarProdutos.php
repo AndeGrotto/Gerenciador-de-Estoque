@@ -22,7 +22,7 @@
     crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="../../Include/css/estilo.css">
+    <link rel="stylesheet" href="../Include/css/estilo.css">
 
 </head>
 <body class="fotocadastro">
@@ -30,10 +30,10 @@
        <!-- Cabeçalho Menu --> 
     </header>
     <main>
-        <div class="_containerCadastro">
-            <img class="imgcadastro" src="../../Include/imagens/avatarCadastro.png"> 
+        <div class="_containerCadastroProdutos">
+            <img class="imgcadastro" src="../Include/imagens/avatarCadastro.png"> 
             <!--<h3>Login Estoque</h3>-->    
-            <form action="cadastro.php" method="POST">
+            <form action="cadastrarProdutos.php" method="POST">
                 <div class="form-group">
                     <i class="fas fa-user"></i>
                     <input type="text" class="form-control font" id="nome" name="nome" title="Digite o nome do produto" placeholder="Nome" required>
@@ -50,10 +50,15 @@
                 </div>
 
                 <div class="form-group grid">
-                    <input class="form-control cadastro" type="submit" value="Adicionar">
+                    <input class="form-control cadastro" name="cadastrarProduto" type="submit" value="Adicionar">
                     <input class="form-control cadastro" type="button" value="Voltar" onclick="goBack()">
                 </div>
             </form>
+            <?php
+                include_once("../Controller/ProdutosController.php");
+                $obj = new ProdutosController();
+                $obj->controlaInsercao();
+            ?>
         </div>
     </main>
     
@@ -77,6 +82,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
-  <script src="../../Include/js/javascript.js"></script>
+  <script src="../Include/js/javascript.js"></script>
 </body>
 </html>

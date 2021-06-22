@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans&display=swap');
 
+
 html, body {
     margin: 0;
     padding: 0;
@@ -47,7 +48,7 @@ html, body {
     animation-duration: 1.5s;
 }
 
-._containerCadastro {
+._containerCadastroProdutos {
     width: 600px;
     height: 500px;
     margin: auto;
@@ -61,10 +62,32 @@ html, body {
     -webkit-box-shadow: 0 0 1em black;
     -moz-box-shadow: 0 0 1em black;
     backdrop-filter: saturate(70%) blur(5px);
-
-    animation-name: fade;
-    animation-duration: 1.5s;
 }
+
+._containerCadastroProdutos .erro{
+    padding-top: 25px;
+    font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+  
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  
+    animation: fa-blink 0.8s 3;
+  }
+  
+  ._containerCadastroProdutos .sucesso{
+    padding-top: 25px;
+    font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(115, 255, 0);
+    text-align: center;
+  
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  
+  }
 
 .imglogin {
     width: 150px;
@@ -176,7 +199,74 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
     transition: 0.5s;
 }
 
+/* Tabela */
+/*table {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}*/
 
+.acoes {
+    width: 25vw;
+}
+
+th {
+    width: 15vw;
+}
+
+.btn:first-child {
+    margin-left: 0px;
+}
+
+.btn {
+    margin-left: 20px;
+    width: 150px;
+}
+
+.icone {
+    padding-right: 10px;
+}
+
+/* Menu */
+.menu-bar {
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.menu-bar ul{
+    height: 70px;
+    padding: 0px;
+    margin: 0px;
+    background-color: #000000;
+    list-style: none;
+    text-align: center;
+}
+
+.menu-bar ul li {
+    display: inline;
+} 
+
+.menu-bar ul li a{
+
+padding: 20px 10px;
+display: inline-block;
+color: #2b5353;
+text-decoration: none;
+}
+
+.menu-bar ul li a:hover { 
+    color: #fff;
+    transition: 0.8s;
+}
+
+.logo {
+    width: 200px;
+    height: 60px;
+    float: left;
+    margin: 5px 0 5px 10px;
+    position: absolute;
+    left: calc(10px);
+}
 
 /* Aparecer o Form */
 
@@ -188,3 +278,10 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
         opacity: 1;
     }
 }
+
+/* Erro de cadastro */
+@keyframes fa-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.70; }
+    100% { opacity: 0; }
+  }
