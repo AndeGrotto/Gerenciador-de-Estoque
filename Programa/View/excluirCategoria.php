@@ -1,6 +1,6 @@
 <?php
-$codigo = $_GET['codigo'];
+$nome = $_GET['nome'];
     include_once("../Controller/CategoriaController.php");
     $obj = new CategoriaController();
-    $obj->controlaExclusao($codigo);
+    $obj->controlaExclusao($nome);
 ?>
