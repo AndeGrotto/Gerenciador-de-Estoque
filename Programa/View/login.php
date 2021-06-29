@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../Include/css/estilo.css">
 
 </head>
-<body class="fotologin">
+<body class="fotologin scroll">
     <main>
         <div class="_containerLogin">
             <img class="imglogin" src="../Include/imagens/avatarLogin.png"> 
@@ -33,12 +33,12 @@
             <form action="login.php" method="POST">
                 <div class="form-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" class="form-control font" id="nome" name="usuario" title="Usuário padrão do estoque" placeholder="Usuário" required>
+                    <input type="text" class="form-control font" minlength="3" maxlength="30" id="user" name="user" title="Usuário padrão do estoque" placeholder="Usuário" required>
                 </div>
         
                 <div class="form-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" class="form-control font" id="senha" name="senha" title="Senha padrão do estoque" placeholder="Password" required>
+                    <input type="password" class="form-control font" minlength="3" maxlength="30" id="senha" name="senha" title="Senha padrão do estoque" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <input class="form-control login" type="submit" value="Login">

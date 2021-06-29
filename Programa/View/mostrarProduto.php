@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Cadastro de Produtos</title>
+    <title>Página de Cadastro de Produto</title>
 
 <!-- Estilos -->
 
@@ -24,46 +24,47 @@
 
     <link rel="stylesheet" href="../Include/css/estilo.css">
 
-    <style>
-    * {
-        font-size: 20px;
-    }
-
-    table {
-        margin-left: auto;
-        margin-top: 10vh;
-        text-align: left;
-    }
-
-    .abc {
-        margin-left: 200px;
-    }
-</style>
-
 </head>
 <body>
 
+    <script>
+      window.onload = load;
+    </script>
+
     <header>
-        <div class="menu-bar">
+        <input type="checkbox" id="bt_menu">
+        <label for="bt_menu">&#9776;</label>
+
+        <nav class="menu">
                 <ul>
-                    <img class="logo" src="../Include/imagens/logo-nome.png"> 
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="cadastrarProdutos.php">Cadastrar Produtos</a></li>
-                </ul>     
-        </div>
-            
-
-
-
+ 
+                    <li><a href="logout.php">Login</a></li>
+                    <li><a href="menu.php">Home</a></li>
+                    <li><a href="#">Produto</a>
+                        <ul> 
+                            <li><a href="cadastrarProduto.php">Cadastrar</a></li>
+                            <li><a href="mostrarProduto.php">Listar</a></li>
+                        </ul>
+                        </li>
+                </ul>    
+                <a href="telaPrincipal.html" class="log"><img class="logo" src="../Include/imagens/logo-nome.png"> </a>
+        </nav>             
     </header>
 
 
     <main>
-        <div class="container">
-            <table class="table table-hover">
+        <div class="container-fluid">
+            <div class="table-responsive-xl table-hover">
+                <div class="botao">
+                    <button onclick="window.location.href='cadastrarProduto.php'" class="btn btn-primary">
+                        <i class="fa fa-plus-square"></i>Adicionar
+                    </button>
+                </div>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Código</th>
                         <th>Preço</th>
                         <th>Quantidade</th>
                         <th>Ações</th>
@@ -71,16 +72,15 @@
                 </thead>
                 <tbody>
                     <?php
-                        include_once("../controller/ProdutosController.php");
-                        $obj = new ProdutosController();
+                        include("../include/SessaoValidate.php");  // Faz a autenticação
+                        include_once("../controller/ProdutoController.php");
+                        $obj = new ProdutoController();
                         $obj->controlaConsulta(1);
                     ?>
                 </tbody>
-                
-               
             </table>
+            </div>
         </div>
-        
     </main>
     
     <!-- Scripts -->

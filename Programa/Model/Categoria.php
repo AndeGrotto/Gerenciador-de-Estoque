@@ -1,10 +1,8 @@
 <?php
 
-class Produtos {
+class Categoria {
     private $id;
     private $nome;
-    private $preco;
-    private $quantidade;
 
     public function __construct() {}
 
@@ -16,4 +14,3 @@ class Produtos {
         return $this->$propiedade;
     }
 }
-?>

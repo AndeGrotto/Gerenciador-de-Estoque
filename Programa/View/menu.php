@@ -11,6 +11,11 @@
 
 </head>
 <body>
+
+	<script>
+      window.onload = load;
+    </script>
+
   <a href="login.html" class="logo" target="_blank">
 		<img src="../Include/imagens/logo.png" alt="">
 	</a>
@@ -19,15 +24,20 @@
   	<label for="menu-icon"></label>
   	<nav class="nav"> 		
   		<ul class="pt-5">
-  			<li><a href="login.php">Login</a></li>
-            <li><a href="mostrarProdutos.php">#Lista de produtos</a></li>
-            <li><a href="cadastrarProdutos.php">Cadastrar Produtos</a></li>
+  			<li><a href="logout.php">Login</a></li>
+            <li><a href="mostrarProduto.php">Lista de produtos</a></li>
+            <li><a href="cadastrarProduto.php">Cadastrar Produtos</a></li>
   		</ul>
   	</nav>
 
   	<div class="section-center">
   		<h1 class="mb-0">Menu do Estoque</h1>
   	</div>
+	<?php
+		include("../include/SessaoValidate.php");  // Faz a autenticação
+	?>
+
+	<script src="../Include/js/javascript.js"></script>
 </body>
 </html>
 

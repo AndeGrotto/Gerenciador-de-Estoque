@@ -1,17 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 
-html, body {
+* {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
- body {
+
+body, button, input, a {
+    font-family: 'Poppins', sans-serif;
+  }
+
+ /*body {
     width: 100vw;
     height: 100vh;
-    font-family: 'Fira Sans', sans-serif;
-    font-family: 'Josefin Sans', sans-serif;
-}
+}*/
+
+.scroll {
+    overflow: hidden;
+  }
 
 .fotologin {
     background-image: url("../imagens/mesa-de-trabalho2.jpg");
@@ -48,14 +55,25 @@ html, body {
     animation-duration: 1.5s;
 }
 
-._containerCadastroProdutos {
+._containerLogin .erro{
+    padding-top: 35px;
+    font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+  
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  }
+
+._containerCadastroProduto {
     width: 600px;
     height: 500px;
     margin: auto;
     margin-top: 50vh;
     top: 50%;     
     transform: translate(0, -43%);
-    padding: 150px 30px;
+    padding: 125px 30px;
     color: white;
     background-color: transparent;
     box-shadow: 0 0 1em black;
@@ -64,7 +82,7 @@ html, body {
     backdrop-filter: saturate(70%) blur(5px);
 }
 
-._containerCadastroProdutos .erro{
+._containerCadastroProduto .erro{
     padding-top: 25px;
     font-weight: bold;
     font-size: 25px;
@@ -77,8 +95,49 @@ html, body {
     animation: fa-blink 0.8s 3;
   }
   
-  ._containerCadastroProdutos .sucesso{
+  ._containerCadastroProduto .sucesso{
     padding-top: 25px;
+    font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(115, 255, 0);
+    text-align: center;
+  
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  
+  }
+
+  ._containerCadastroCategoria {
+    width: 600px;
+    height: 400px;
+    margin: auto;
+    margin-top: 50vh;
+    top: 50%;     
+    transform: translate(0, -43%);
+    padding: 145px 30px;
+    color: white;
+    background-color: transparent;
+    box-shadow: 0 0 1em black;
+    -webkit-box-shadow: 0 0 1em black;
+    -moz-box-shadow: 0 0 1em black;
+    backdrop-filter: saturate(70%) blur(5px);
+}
+
+._containerCadastroCategoria .erro{
+    padding-top: 35px;
+    font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+  
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  
+    animation: fa-blink 0.8s 3;
+  }
+  
+  ._containerCadastroCategoria .sucesso{
+    padding-top: 35px;
     font-weight: bold;
     font-size: 25px;
     font-weight: bold;
@@ -139,10 +198,6 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
     color: black;
 }
 
-.font {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
 .login {
     margin-top: 10%;
     padding-top: 8px;
@@ -199,74 +254,209 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
     transition: 0.5s;
 }
 
+
+
+
+
 /* Tabela */
-/*table {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}*/
 
-.acoes {
-    width: 25vw;
-}
-
-th {
-    width: 15vw;
-}
-
-.btn:first-child {
-    margin-left: 0px;
-}
-
-.btn {
-    margin-left: 20px;
-    width: 150px;
-}
-
-.icone {
-    padding-right: 10px;
-}
+table {
+    font-size: 20px;
+    margin: auto;
+    margin-top: 5px;
+    width: 100%;
+  } 
+  .align-bt {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .btn {
+    font-size: 17px;
+  }
+  
+  .botao {
+    margin-top: 10vw;
+  }
+  
+  .botao button {
+    width: 200px;
+    font-size: 18px;
+  }
+  
+  .botao button i {
+    padding-right: 5px;
+  }
 
 /* Menu */
-.menu-bar {
-    font-family: 'Fira Sans', sans-serif;
-    font-family: 'Josefin Sans', sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-}
 
-.menu-bar ul{
-    height: 70px;
-    padding: 0px;
-    margin: 0px;
+.menu {
+    margin-top: -20px;
+    padding: 0;
+    width: 100%;
+    height: 50px;
     background-color: #000000;
+    font-weight: bold;
+  }
+  
+  .menu ul {
     list-style: none;
+    position: relative;
+  }
+  
+  .menu ul li {
+    width: 150px;
+    float: left;
+    cursor: pointer;
+  }
+  
+  .menu a {
+    padding: 13px;
+    display: block;
+    text-decoration: none;
     text-align: center;
-}
-
-.menu-bar ul li {
-    display: inline;
-} 
-
-.menu-bar ul li a{
-
-padding: 20px 10px;
-display: inline-block;
-color: #2b5353;
-text-decoration: none;
-}
-
-.menu-bar ul li a:hover { 
-    color: #fff;
-    transition: 0.8s;
-}
+    background-color: #000000;
+    color: #757575;
+  }
+  
+  .menu ul ul {
+    position: absolute;
+    visibility: hidden;
+  }
+  
+  .menu ul li:hover ul {
+    visibility: visible;
+  }
+  
+  .menu a:hover {
+    color: rgb(255, 255, 255);
+    background-color: black;
+  }
+  
+  .menu ul ul li {
+    float: none;
+    border: solid 1px #000000;
+  }
+  
+  .menu ul ul li a {
+    background-color: #000000;
+  }
+  
+  .menu ul ul li a:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+  }
+  
+  label[for="bt_menu"] {
+    padding: 5px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    width: 50px;
+    height: 55px;
+  }
+  
+  #bt_menu {
+    display: none;
+  }
+  
+  label[for="bt_menu"] {
+    display: none;
+  }
+  
+  .menu .log {
+    width: 0px;
+    background-color: #4877f4;
+  }
 
 .logo {
     width: 200px;
-    height: 60px;
-    float: left;
-    margin: 5px 0 5px 10px;
+    height: 45px;
+    float: right;
+    margin: -8px 0;
     position: absolute;
-    left: calc(10px);
+    right: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width: 800px) {
+
+    .logo {
+      visibility: hidden;
+    }
+  
+    label[for="bt_menu"] {
+      display: block;
+      width: 100%;
+    }
+  
+    #bt_menu:checked ~ .menu {
+      margin-left: 0;
+    }
+    
+    .menu {
+      margin-top: -10px;
+      margin-left: -100%;
+      transition: all .4s;
+    }
+  
+    .menu ul li {
+      width: 100%;
+      float: none;
+    }
+  
+    .menu ul ul{
+      position: static;
+      overflow: hidden;
+      max-height: 0;
+      transition: all .4s;
+    }
+  
+    .menu ul li:hover ul {
+      height: auto;
+      max-height: 200px;
+    }
+  
+    .a {
+      visibility: hidden;
+    }
+  }
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
 
 /* Aparecer o Form */
 

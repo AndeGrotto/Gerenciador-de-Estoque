@@ -1,14 +1,14 @@
-<?php
+<?php 
 require_once("../Model/Conect_BD.php");
 require_once("../Model/Login.php");
 require_once("../Model/LoginDAO.php");
 
 class LoginController {
 
-    public function controlaConsulta() {
-		if (!empty($_POST['usuario']) && !empty($_POST['senha'])) {
+	public function controlaConsulta() {
+		if (!empty($_POST['user']) && !empty($_POST['senha'])) {
 		  $login = new Login();
-		  $login->usuario = $_POST['usuario'];
+		  $login->usuario = $_POST['user'];
 		  $login->senha = $_POST['senha'];
 	  
 		  $DAO = new LoginDAO();
@@ -22,16 +22,13 @@ class LoginController {
 			  echo "<p class=\"erro fa-blink\">SENHA INVÁLIDA!</p>";
 			}
 			else {
-				header("location: ../View/cadastrarProdutos.php");
+				session_start();
+				$_SESSION["nome_usuario"] = $login->usuario;
+				$_SESSION["senha_usuario"] = $login->senha;
+				header("location: ../View/menu.php");
 			  }
 		  }
 		}
 	  }
-
-
-
-}
-
-
-
+  	}
 ?>

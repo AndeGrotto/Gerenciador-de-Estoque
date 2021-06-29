@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Cadastro de Produtos</title>
+    <title>Página de Cadastro de Categoria</title>
 
 <!-- Estilos -->
 
@@ -26,37 +26,35 @@
 
 </head>
 <body class="fotocadastro">
+
+    <script>
+      window.onload = load;
+    </script>
+
     <header>
        <!-- Cabeçalho Menu --> 
     </header>
     <main>
-        <div class="_containerCadastroProdutos">
-            <img class="imgcadastro" src="../Include/imagens/avatarCadastro.png"> 
+        <div class="_containerCadastroCategoria">
+            <img class="imgcadastro" src="../Include/imagens/avatarCategoria.png"> 
             <!--<h3>Login Estoque</h3>-->    
-            <form action="cadastrarProdutos.php" method="POST">
-                <div class="form-group">
-                    <i class="fas fa-user"></i>
-                    <input type="text" class="form-control font" id="nome" name="nome" title="Digite o nome do produto" placeholder="Nome" required>
-                </div>
-        
-                <div class="form-group">
-                    <i class="fas fa-dollar-sign"></i>
-                    <input type="text" class="preco form-control font" id="Preço" name="preco" title="Digite o valor" placeholder="Preço" required>
-                </div>
+            <form action="cadastrarCategoria.php" method="POST">
+
 
                 <div class="form-group">
-                    <i class="fas fa-sort-amount-up"></i>
-                    <input type="number" class="form-control font" id="Quantidade" name="quantidade" title="Digite a quantidade" placeholder="Quantidade" required>
+                    <i class="fas fa-tag"></i>
+                    <input type="text" minlength="1" maxlength="30" class="nome form-control font" id="nome" name="nome" title="Digite a categoria" placeholder="Categoria" required>
                 </div>
 
                 <div class="form-group grid">
-                    <input class="form-control cadastro" name="cadastrarProduto" type="submit" value="Adicionar">
-                    <input class="form-control cadastro" type="button" value="Voltar" onclick="goBack()">
+                    <input class="form-control cadastro" name="cadastrarCategoria" type="submit" value="Adicionar">
+                    <input class="form-control cadastro" type="button" name="voltarCategoria" value="Voltar" onclick="window.location.href='mostrarCategoria.php'">
                 </div>
             </form>
             <?php
-                include_once("../Controller/ProdutosController.php");
-                $obj = new ProdutosController();
+                include("../include/SessaoValidate.php");  // Faz a autenticação
+                include_once("../Controller/CategoriaController.php");
+                $obj = new CategoriaController();
                 $obj->controlaInsercao();
             ?>
         </div>
