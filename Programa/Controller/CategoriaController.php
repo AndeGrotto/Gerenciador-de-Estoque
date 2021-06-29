@@ -6,14 +6,29 @@ require_once("../Model/CategoriaDAO.php");
 
 class CategoriaController {
 
+private function preparaDados()
+	{
+	  $categoria = new Categoria();
+	  
+	  $nome = trim($_POST["nome"]);
+
+	  $categoria->nome = $nome;
+	  
+	  return $categoria;    
+	}
+
 public function controlaConsulta($op) {
 		$DAO = new CategoriaDAO();
 		$lista = array();
-		$numCol = 3;
+		$listaCategoria = array();
+		$numCol = 2;
 
 		switch($op) {
 		  case 1:
 			$lista = $DAO->Consultar($op, "", "");
+			break;
+		case 2:
+			$listaCategoria = $DAO->Consultar(1, "", "");
 			break;
 		}
 	
@@ -26,11 +41,23 @@ public function controlaConsulta($op) {
 			if($nome)
 			  echo "<td>$nome</td>";
 			  
-			  echo "<th class='acoes'><div class='align-bt'><a href='../View/editarCategoria.php?nome=$nome' class='btn btn-success' role='button' aria-pressed='true'><i class='fas fa-edit'></i></a>
-			  <a href='../View/excluirCategoria.php?nome=$nome' class='btn btn-danger' role='button' aria-pressed='true'  onclick='return ConfirmarDelete();'><i class=' fas fa-trash-alt'></i></a></div></th>";
-		  
+			  echo "<th class='acoes'><div class='align-bt'><a href='../View/excluirCategoria.php?nome=$nome' class='btn btn-danger' role='button' aria-pressed='true'  onclick='return ConfirmarDelete();'><i class=' fas fa-trash-alt'></i></a></div></th>";
+			  
 			  echo "</tr>";
+			  /*<a href='../View/editarCategoria.php?nome=$nome' class='btn btn-success' role='button' aria-pressed='true'><i class='fas fa-edit'></i></a>*/
 			}
+		}else if(count($listaCategoria) > 0) {
+			echo "<select name='idCategoria' id='idCategoria'>";
+			for($i = 0; $i < count($listaCategoria); $i++) {
+				$id = $listaCategoria[$i]->id;
+			  	$nome = $listaCategoria[$i]->nome;
+			  
+			  
+			  	if($nome){
+					echo "<option value='{$id}'>$nome</option>";	
+				}
+			}
+			  	echo "</select>"; 
 		}
 		else {
 		  echo "<tr>";
@@ -39,29 +66,22 @@ public function controlaConsulta($op) {
 		}
 	  }
 
-	  private function preparaDados()
-	  {
-		$categoria = new Categoria();
-		
-		$nome = trim($_POST["nome"]);
-
-		$categoria->nome = $nome;
-		
-		return $categoria;    
-	  }
-
     public function controlaInsercao() {
 		if (isset($_POST["nome"])) {
-
+			$n = $_POST["nome"];
 				$DAO  = new CategoriaDAO();
 				$nome = $this->preparaDados();
 				$result = $DAO->Inserir($nome);
 				  if($result == 1)
 				  {
-					echo "<p class=\"sucesso fa-blink\">CATEGORIA INSERIDA COM SUCESSO!</p>";
+					echo"<div class=\"alert alert-success\" role=\"alert\">
+            		<b>$n</b> inserido com sucesso!
+        			</div>";
 				  }
 				  else if($result == -1) {
-					echo "<p class=\"erro fa-blink\">CATEGORIA JÁ EXISTE, TENTE NOVAMENTE!</p>";
+					echo"<div class=\"alert alert-danger\" role=\"alert\">
+            		<b>$n</b> já existe, tente novamente!
+        			</div>";
 				  }	  
 				  else {
 					$mensagens[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
@@ -69,29 +89,57 @@ public function controlaConsulta($op) {
 					header("Location: ../View/cadastrarCategoria.php?msg=$msg");
 				  }
 				  
-				  unset($categoria);
+				  unset($nome);
 			}
 	}
 
+	public function controlaAlteracao() {
+		if (isset($_POST["nome"])) {
+			$n = $_POST["nome"];
+				$DAO  = new CategoriaDAO();
+				$nome = $this->preparaDados();
+				$result = $DAO->Alterar($nome);
+				  if($result == 1)
+				  {
+					echo"<div class=\"alert alert-success\" role=\"alert\">
+            		$n alterado com sucesso!
+        			</div>";
+				  }
+				  else if($result == -1) {
+					echo"<div class=\"alert alert-danger\" role=\"alert\">
+            		$n não existe, tente novamente!
+        			</div>";
+				  }	  
+				  else {
+					$mensagens[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+					$msg = serialize($mensagens);
+					header("Location: ../View/editarCategoria.php?msg=$msg");
+				  }
+				  
+				  unset($nome);
+			}
+	}
+
+
     public function controlaExclusao($cod) {
-		echo $cod;
 		$DAO  = new CategoriaDAO();
 		$resultado = array();
+
 		$resultado = $DAO->Consultar(2, "nome", $cod);
-		echo "Opaaaa:   $resultado";
 		if($resultado) {
 			$DAO  = new CategoriaDAO();
 			$validar = $DAO->Excluir($cod);
 			if($validar) {
-				echo "<p class=\"sucesso fa-blink\">CATEGORIA DELETADA COM SUCESSO!</p>";
 				header("location: ../View/mostrarCategoria.php");
 			}else {
-				echo "<p class=\"erro fa-blink\">NÃO FOI POSSÍVEL EXCLUIR A CATEGORIA, TENTE NOVAMENTE!</p>";
+				echo "<script>alert('SENHA INVÁLIDA');</script>";
+				header("location: ../View/mostrarCategoria.php");
 			}
-		}
+		} else {
+			
+		  }	
+		unset($resultado);
 	}
-
 }
-echo "<script type=\"text/javascript\" src=\"../Include/js/javascript.js\"></script>";
 
 ?>

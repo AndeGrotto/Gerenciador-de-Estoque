@@ -25,17 +25,16 @@
   	<nav class="nav"> 		
   		<ul class="pt-5">
   			<li><a href="logout.php">Login</a></li>
+            <li><a href="cadastrarCategoria.php">Cadastrar Categoria</a></li>
+			<li><a href="cadastrarProduto.php">Cadastrar Produtos</a></li>
+			<li><a href="mostrarCategoria.php">Lista de Categoria</a></li>
             <li><a href="mostrarProduto.php">Lista de produtos</a></li>
-            <li><a href="cadastrarProduto.php">Cadastrar Produtos</a></li>
   		</ul>
   	</nav>
 
   	<div class="section-center">
   		<h1 class="mb-0">Menu do Estoque</h1>
   	</div>
-	<?php
-		include("../include/SessaoValidate.php");  // Faz a autenticação
-	?>
 
 	<script src="../Include/js/javascript.js"></script>
 </body>

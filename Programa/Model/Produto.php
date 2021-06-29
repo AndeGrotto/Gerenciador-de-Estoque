@@ -5,6 +5,7 @@ class Produto {
     private $nome;
     private $preco;
     private $quantidade;
+    private $idCategoria;
 
     public function __construct() {}
 

@@ -13,17 +13,18 @@ class ProdutoDAO {
 
   public function Inserir($produto){
     try {
-      $stmt = $this->p->query("SELECT * FROM produto WHERE codigo = '$produto->codigo'");
+      $stmt = $this->p->query("SELECT * FROM produto WHERE codigo = '$produto->codigo' OR nome = '$produto->nome'");
       if($stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT))
 	    return -1;
 
-      $stmt = $this->p->prepare("INSERT INTO produto(codigo, nome, preco, quantidade) VALUES (?, ?, ?, ?)");
+      $stmt = $this->p->prepare("INSERT INTO produto(codigo, nome, preco, quantidade, idCategoria) VALUES (?, ?, ?, ?, ?)");
 
     $this->p->beginTransaction();
     $stmt->bindValue(1, $produto->codigo);
     $stmt->bindValue(2, $produto->nome);
     $stmt->bindValue(3, $produto->preco);
     $stmt->bindValue(4, $produto->quantidade);
+    $stmt->bindValue(5, $produto->idCategoria);
 
       $stmt->execute();
 
@@ -48,10 +49,7 @@ class ProdutoDAO {
       {
         case 1:
           $query = "SELECT * FROM produto";
-          break;
-        case 2:
-          $query = "SELECT * FROM produto WHERE $param=$value";
-          break;      
+          break;   
       }    
 	  
       if($query != null)
@@ -74,6 +72,8 @@ class ProdutoDAO {
 		  $p->preco = $registro["preco"];
 		if(isset($registro["quantidade"]))
 		  $p->quantidade = $registro["quantidade"];
+    if(isset($registro["idCategoria"]))
+		  $p->idCategoria = $registro["idCategoria"];
 
 		// Ao final, adiciona o registro como um item do array de retorno
 	    $items[] = $p;

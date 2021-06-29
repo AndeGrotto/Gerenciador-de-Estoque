@@ -6,6 +6,25 @@ require_once("../Model/ProdutoDAO.php");
 
 class ProdutoController {
 
+private function preparaDados()
+	{
+	  $produto = new Produto();
+	  
+	  $codigo = trim($_POST["codigo"]);
+	  $nome = trim($_POST["nome"]);
+	  $preco = trim($_POST["preco"]);
+	  $quantidade = trim($_POST["quantidade"]);
+	  $idCategoria = trim($_POST["idCategoria"]);
+
+	  $produto->codigo = $codigo;
+	  $produto->nome = $nome;
+	  $produto->preco = $preco;
+	  $produto->quantidade = $quantidade;
+	  $produto->idCategoria = $idCategoria;
+
+	  return $produto;    
+	}
+
 	public function controlaConsulta($op) {
 		$DAO = new ProdutoDAO();
 		$lista = array();
@@ -23,7 +42,8 @@ class ProdutoController {
 			$nome = $lista[$i]->nome;
 			$preco = $lista[$i]->preco;
 			$quantidade = $lista[$i]->quantidade;
-			
+			$idCategoria = $lista[$i]->idCategoria;
+
 			echo "<tr>";
 			
 			if($codigo)
@@ -34,10 +54,11 @@ class ProdutoController {
 			  echo "<td>$preco</td>";
 			if($quantidade)
 			  echo "<td>$quantidade</td>";
+			if($idCategoria)
+			  echo "<td>$idCategoria</td>";
 			  
-			  echo "<th class='acoes'><div class='align-bt'><a href='../View/editarProduto.php?codigo=$codigo&nome=$nome&preco=$preco&quantidade=$quantidade' class='btn btn-success' role='button' aria-pressed='true'><i class='fas fa-edit'></i></a>
-			  <a href='../View/excluirProduto.php?codigo=$codigo' class='btn btn-danger' role='button' aria-pressed='true'  onclick='return ConfirmarDelete();'><i class=' fas fa-trash-alt'></i></a></div></th>";
-		  
+			  echo "<th class='acoes'><div class='align-bt'><a href='../View/excluirProduto.php?codigo=$codigo' class='btn btn-danger' role='button' aria-pressed='true'  onclick='return ConfirmarDelete();'><i class=' fas fa-trash-alt'></i></a></div></th>";
+			  /*<a href='../View/editarProduto.php?codigo=$codigo&nome=$nome&preco=$preco&quantidade=$quantidade' class='btn btn-success' role='button' aria-pressed='true'><i class='fas fa-edit'></i></a>*/
 			  echo "</tr>";
 			}
 		}
@@ -48,35 +69,24 @@ class ProdutoController {
 		}
 	  }
 
-	  private function preparaDados()
-	  {
-		$produto = new Produto();
-		
-		$codigo = trim($_POST["codigo"]);
-		$nome = trim($_POST["nome"]);
-        $preco = trim($_POST["preco"]);
-		$quantidade = trim($_POST["quantidade"]);
-
-		$produto->codigo = $codigo;
-		$produto->nome = $nome;
-		$produto->preco = $preco;
-		$produto->quantidade = $quantidade;
-		
-		return $produto;    
-	  }
-
     public function controlaInsercao() {
-		if (isset($_POST['preco']) >= 1 && isset($_POST['preco']) >= 1 && isset($_POST['quantidade']) >= 1) {
+		if (isset($_POST['codigo']) >= 1 && isset($_POST['nome']) >= 1 && isset($_POST['preco']) >= 1 && isset($_POST['quantidade']) >= 1 && isset($_POST['idCategoria']) >= 1) {
 
+				$n = $_POST['nome'];
+				$c = $_POST['codigo'];
 				$DAO  = new ProdutoDAO();
 				$produto = $this->preparaDados();
 				$result = $DAO->Inserir($produto);
 				  if($result == 1)
 				  {
-					echo "<p class=\"sucesso fa-blink\">PRODUTO INSERIDO COM SUCESSO!</p>";
+					echo"<div class=\"alert alert-success\" role=\"alert\">
+            		$n inserido com sucesso!
+        			</div>";
 				  }
 				  else if($result == -1) {
-					echo "<p class=\"erro fa-blink\">PRODUTO JÁ EXISTE, TENTE NOVAMENTE!</p>";
+					echo"<div class=\"alert alert-danger\" role=\"alert\">
+            		O código <b>$c</b> ou <b>$n</b> já existe, tente novamente outro!
+        			</div>";
 				  }	  
 				  else {
 					$mensagens[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
@@ -84,10 +94,9 @@ class ProdutoController {
 					header("Location: ../View/cadastrarProduto.php?msg=$msg");
 				  }
 				  
-				  unset($Produto);
+				  unset($produto);
 			}
-	}
-
+}
 
 	public function controlaAlteracao() {
 		

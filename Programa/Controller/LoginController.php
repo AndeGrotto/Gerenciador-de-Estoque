@@ -6,9 +6,9 @@ require_once("../Model/LoginDAO.php");
 class LoginController {
 
 	public function controlaConsulta() {
-		if (!empty($_POST['user']) && !empty($_POST['senha'])) {
+		if (!empty($_POST['usuario']) && !empty($_POST['senha'])) {
 		  $login = new Login();
-		  $login->usuario = $_POST['user'];
+		  $login->usuario = $_POST['usuario'];
 		  $login->senha = $_POST['senha'];
 	  
 		  $DAO = new LoginDAO();
@@ -16,10 +16,10 @@ class LoginController {
 	  
 		  if($result) {
 			if($result == -2) {
-				echo "<p class=\"erro fa-blink\">USUÁRIO NÃO ENCONTRADO!</p>";
+				echo "<script>alert('USUÁRIO NÃO ENCONTRADO!');</script>";
 			  }
 			else if($result == -1) {
-			  echo "<p class=\"erro fa-blink\">SENHA INVÁLIDA!</p>";
+				echo "<script>alert('SENHA INVÁLIDA');</script>";
 			}
 			else {
 				session_start();

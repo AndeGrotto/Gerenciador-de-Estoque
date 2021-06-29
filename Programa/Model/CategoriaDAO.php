@@ -47,7 +47,7 @@ class CategoriaDAO {
           $query = "SELECT * FROM categoria";
           break;
         case 2:
-          $query = "SELECT * FROM categoria WHERE $param=$value";
+          $query = "SELECT * FROM categoria WHERE $param='$value'";
           break;      
       }    
 	  
@@ -63,6 +63,8 @@ class CategoriaDAO {
 	    $c = new Categoria();
 		
 		// Sempre verifica se a query SQL retornou a respectiva coluna
+    if(isset($registro["id"]))
+		  $c->id = $registro["id"];
     if(isset($registro["nome"]))
 		  $c->nome = $registro["nome"];
 
@@ -75,6 +77,33 @@ class CategoriaDAO {
 	// Em caso de erro, retorna a mensagem:
 	catch(PDOException $e) {
       echo "Erro: ".$e->getMessage();
+    }
+  }
+
+  public function Alterar($categoria) {
+    try {
+      $stmt = $this->c->prepare("UPDATE categoria SET nome=? WHERE nome=?");
+      // Inicia a transação
+      $this->c->beginTransaction();
+      // Vincula um valor a um parâmetro da sentença SQL, na ordem
+      $stmt->bindValue(1, $categoria->nome);
+      $stmt->bindValue(2, $categoria->nome);
+    
+      // Executa a query
+      $stmt->execute();
+  
+      // Grava a transação
+      $this->c->commit();
+    
+      // Fecha a conexão
+      unset($this->c);
+
+      return true;
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      $this->erro = "Erro: " . $e->getMessage();
+    return false;
     }
   }
 

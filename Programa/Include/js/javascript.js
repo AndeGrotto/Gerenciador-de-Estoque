@@ -7,7 +7,7 @@ $(document).ready(function(){
     $('.dinheiro').mask('000.000.000.000,00');
     $('.preco').mask('#.##0,00', {reverse: true});
     $('.codigo').mask('#');
-    $('.quantidade').mask('#');
+    $('.quantidade').mask('#.##0.000', {reverse: true});
 });
 
 function goBack() {
